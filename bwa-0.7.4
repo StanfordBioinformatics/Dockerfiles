@@ -1,12 +1,13 @@
 # bwa 0.7.4
 
 FROM ubuntu:14.04
-MAINTAINER Isaac Liao <iliao@stanford.edu>
+MAINTAINER Isaac Liao <isaacliao@gmail.com>
+RUN apt-get update
 
 # Unfortunately this version is not in apt-get or git, so download from Sourceforge and build it ourselves.
-# These commands are all chained together so that only one layer is created, minimizing final image size.
-RUN apt-get update && \
-    DEBIAN_FRONTEND=noninteractive apt-get -y install \
+# These commands are all chained together so that only one layer is created, allowing the cleanup steps to 
+# reduce final image size.
+RUN DEBIAN_FRONTEND=noninteractive apt-get -y install \
         gcc \
         make \
         wget \
