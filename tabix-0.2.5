@@ -1,0 +1,12 @@
+# tabix 0.2.5
+
+FROM ubuntu:14.04
+MAINTAINER Isaac Liao <isaacliao@gmail.com>
+RUN apt-get update
+
+WORKDIR /tmp
+RUN DEBIAN_FRONTEND=noninteractive apt-get -y install wget && \
+    wget http://launchpadlibrarian.net/74318164/tabix_0.2.5-1ubuntu1_amd64.deb && \
+    dpkg -i tabix_0.2.5-1ubuntu1_amd64.deb && \
+    rm tabix_0.2.5-1ubuntu1_amd64.deb && \
+    DEBIAN_FRONTEND=noninteractive apt-get -y autoremove wget
