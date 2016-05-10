@@ -1,0 +1,11 @@
+FROM nathankw/centos6-python2.7.10
+MAINTAINER Nathaniel Watson <nathankw@stanford.edu>
+RUN pip install cutadapt
+#INSTALL Trim Galore
+RUN mkdir -p /srv/src/TrimGalore && \
+  cd /srv/src/TrimGalore && \
+  wget http://www.bioinformatics.babraham.ac.uk/projects/trim_galore/trim_galore_v0.4.1.zip && \
+  unzip trim_galore_v0.4.1.zip && \
+  mv trim_galore_zip/* . && \
+  rm -rf trim_galore_zip && \
+ENV PATH=/srv/src/TrimGalore/:${PATH}
