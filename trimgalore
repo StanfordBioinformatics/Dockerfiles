@@ -25,5 +25,5 @@ RUN mkdir /srv/software/FASTQC && \
 	chmod a+x fastqc
 ENV PATH=/srv/software/FASTQC/FastQC:${PATH}
 
-#CMD ["--help"]
-#ENTRYPOINT ["trim_galore"]
+CMD ["--help"]
+ENTRYPOINT ["trim_galore"]
