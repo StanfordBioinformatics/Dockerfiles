@@ -14,14 +14,6 @@ RUN yum update -y && yum groupinstall -y 'Development Tools' && yum install -y w
 RUN mkdir /srv/software
 #gcc-c++ needed for running g++ to make tools, such as Bowtie2
 #gcc needed for installing Python
-RUN git clone https://github.com/nathankw/KNIFE.git /srv/software/knife && \
-	cd /srv/software/knife && \	
-	git remote add upstream https://github.com/lindaszabo/KNIFE.git && \
-	git pull
-RUN git clone https://github.com/nathankw/MACHETE.git /srv/software/machete && \
-	cd /srv/software/machete && \
-	git remote add upstream https://github.com/gillianhsieh/MACHETE && \
-	git pull
 #INSTALL Python 2.7.10
 RUN mkdir -p /srv/src/Python /srv/software/Python && \
 	cd /srv/src/Python && \
