@@ -14,7 +14,8 @@ RUN mkdir /usr/java && \
 	cd /usr/java && \
 	wget http://javadl.oracle.com/webapps/download/AutoDL?BundleId=207764 && \
 	mv "AutoDL?BundleId=207764" jre.rpm && \
-	yum install -y jre.rpm
+
+RUN yum install -y /usr/java/jre.rpm
 #INSTALL FASTQC v0.11.5, which requires Java.
 # trim_galore can call FASTQC if the --fastqc switch is used.
 RUN mkdir /srv/software/FASTQC && \
