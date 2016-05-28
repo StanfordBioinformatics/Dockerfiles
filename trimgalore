@@ -1,6 +1,12 @@
 FROM nathankw/centos6-python2.7.10
 MAINTAINER Nathaniel Watson <nathankw@stanford.edu>
 RUN pip install cutadapt
+#Download rpm for JRE v1.8.0_91.
+RUN mkdir /usr/java && \
+	cd /usr/java && \
+	wget http://javadl.oracle.com/webapps/download/AutoDL?BundleId=207764 && \
+	mv "AutoDL?BundleId=207764" jre.rpm && \
+RUN yum install -y /usr/java/jre.rpm
 #INSTALL Trim Galore v0.4.1.
 RUN mkdir -p /srv/software/TrimGalore && \
   cd /srv/software/TrimGalore && \
@@ -15,7 +21,7 @@ RUN mkdir /usr/java && \
 	wget http://javadl.oracle.com/webapps/download/AutoDL?BundleId=207764 && \
 	mv "AutoDL?BundleId=207764" jre.rpm && \
 
-RUN yum install -y /usr/java/jre.rpm
+/usr/java/jre.rpm
 #INSTALL FASTQC v0.11.5, which requires Java.
 # trim_galore can call FASTQC if the --fastqc switch is used.
 RUN mkdir /srv/software/FASTQC && \
