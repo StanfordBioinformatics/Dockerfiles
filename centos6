@@ -1,11 +1,6 @@
 FROM centos:centos6
 #comes with python/2.7.5
 MAINTAINER Nathaniel Watson <nathankw@stanford.edu>
-#Download rpm for JRE v1.8.0_91.
-RUN mkdir /usr/java && \
-  cd /usr/java && \
-  wget http://javadl.oracle.com/webapps/download/AutoDL?BundleId=207764 && \
-  mv "AutoDL?BundleId=207764" jre.rpm
 #RUN yum update -y && yum install -y wget git gcc unzip gcc-c++ zlib-devel openssl-devel sqlite-devel bzip2-devel ncurses-devel lapack-dev blas-dev
 RUN yum update -y && yum groupinstall -y 'Development Tools' && yum install -y wget \
 	bzip2-devel \
@@ -13,8 +8,13 @@ RUN yum update -y && yum groupinstall -y 'Development Tools' && yum install -y w
 	ncurses-devel \
 	openssl-devel \
 	sqlite-devel \
-	zlib-devel \
-	/usr/java/jre.rpm
+	zlib-devel 
+#Download rpm for JRE v1.8.0_91.
+RUN mkdir /usr/java && \
+  cd /usr/java && \
+  wget http://javadl.oracle.com/webapps/download/AutoDL?BundleId=207764 && \
+  mv "AutoDL?BundleId=207764" jre.rpm
+RUN yum install -y /usr/java/jre.rpm
 #lapack-dev blas-dev for installing scipy in Python
 #Development Tools installs 28 packages, and their dependencies. The number of dependencies installed on a base image of centos:centos6 were 101, notably of which are Perl v5.10.1, git v1.7.1, unzip
 RUN mkdir /srv/software
