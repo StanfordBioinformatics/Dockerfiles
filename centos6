@@ -5,7 +5,7 @@ MAINTAINER Nathaniel Watson <nathankw@stanford.edu>
 RUN mkdir /srv/src /srv/software
 RUN yum update -y && yum groupinstall -y 'Development Tools' && yum install -y wget \
 	bzip2-devel \
-	lapack-dev blas-dev \
+	lapack-devel blas-devel \
 	ncurses-devel \
 	openssl-devel \
 	sqlite-devel \
