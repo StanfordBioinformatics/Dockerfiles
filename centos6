@@ -2,6 +2,7 @@ FROM centos:centos6
 #comes with python/2.7.5
 MAINTAINER Nathaniel Watson <nathankw@stanford.edu>
 #RUN yum update -y && yum install -y wget git gcc unzip gcc-c++ zlib-devel openssl-devel sqlite-devel bzip2-devel ncurses-devel lapack-dev blas-dev
+RUN mkdir /srv/src /srv/software
 RUN yum update -y && yum groupinstall -y 'Development Tools' && yum install -y wget \
 	bzip2-devel \
 	lapack-dev blas-dev \
@@ -10,17 +11,18 @@ RUN yum update -y && yum groupinstall -y 'Development Tools' && yum install -y w
 	sqlite-devel \
 	zlib-devel 
 #Download rpm for JRE v1.8.0_91.
-RUN mkdir /usr/java && \
-  cd /usr/java && \
-	wget --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u91-b14/jre-8u91-linux-i586.rpm
-RUN yum install -y /usr/java/jre-8u91-linux-i586.rpm 
+# When downloading the JRE via the browser, Oracle now requires acceptance of terms. 
+# https://ivan-site.com/2012/05/download-oracle-java-jre-jdk-using-a-script found a way to do this with wget, which I use here as well.
+RUN cd /srv/src && \
+	wget --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u91-b14/jre-8u91-linux-x64.rpm
+RUN yum install -y jre-8u91-linux-x64.rpm
 #lapack-dev blas-dev for installing scipy in Python
 #Development Tools installs 28 packages, and their dependencies. The number of dependencies installed on a base image of centos:centos6 were 101, notably of which are Perl v5.10.1, git v1.7.1, unzip
-RUN mkdir /srv/software
+
 #gcc-c++ needed for running g++ to make tools, such as Bowtie2
 #gcc needed for installing Python
 #INSTALL Python 2.7.10
-RUN mkdir -p /srv/src/Python /srv/software/Python && \
+RUN mkdir /srv/src/Python /srv/software/Python && \
 	cd /srv/src/Python && \
 	wget https://www.python.org/ftp/python/2.7.10/Python-2.7.10.tgz && \
 	tar -zxf Python-2.7.10.tgz && \
