@@ -1,4 +1,4 @@
-FROM nathankw/centos6-python2.7.10
+FROM nathankw/centos6
 MAINTAINER Nathaniel Watson <nathankw@stanford.edu>
 RUN pip install cutadapt
 #INSTALL Trim Galore v0.4.1.
@@ -20,6 +20,7 @@ RUN mkdir /srv/software/FASTQC && \
 ENV PATH=/srv/software/FASTQC/FastQC:${PATH}
 
 RUN mkdir /Trimmed
+RUN rm /srv/software/TrimGalore/trim_galore_v0.4.1.zip /srv/software/FASTQC/fastqc_v0.11.5.zip
 
 #CMD ["--help"]
 #ENTRYPOINT ["trim_galore"]
