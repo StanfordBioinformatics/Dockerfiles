@@ -10,6 +10,7 @@ RUN yum update -y && yum groupinstall -y 'Development Tools' && yum install -y w
 	openssl-devel \
 	sqlite-devel \
 	zlib-devel 
+#'yum clean all' so this error doesn't pop up when trying to install Java: Rpmdb checksum is invalid: dCDPT(pkg checksums)
 RUN yum clean all
 #Download rpm for JRE v1.8.0_91.
 # When downloading the JRE via the browser, Oracle now requires acceptance of terms. 
@@ -34,5 +35,5 @@ RUN mkdir /srv/src/Python /srv/software/Python && \
 ENV PATH=/srv/software/Python/bin:${PATH}
 RUN	wget https://bootstrap.pypa.io/get-pip.py && \
 	python get-pip.py && \
-	pip install scipy && \
-	pip install numpy
+	pip install numpy && \
+	pip install scipy
