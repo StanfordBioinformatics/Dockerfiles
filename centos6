@@ -15,7 +15,7 @@ RUN yum update -y && yum groupinstall -y 'Development Tools' && yum install -y w
 # https://ivan-site.com/2012/05/download-oracle-java-jre-jdk-using-a-script found a way to do this with wget, which I use here as well.
 RUN cd /srv/src && \
 	wget --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u91-b14/jre-8u91-linux-x64.rpm
-RUN yum install -y jre-8u91-linux-x64.rpm
+RUN yum install -y /srv/src/jre-8u91-linux-x64.rpm
 #lapack-dev blas-dev for installing scipy in Python
 #Development Tools installs 28 packages, and their dependencies. The number of dependencies installed on a base image of centos:centos6 were 101, notably of which are Perl v5.10.1, git v1.7.1, unzip
 
