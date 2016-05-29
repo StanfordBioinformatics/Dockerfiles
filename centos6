@@ -10,6 +10,7 @@ RUN yum update -y && yum groupinstall -y 'Development Tools' && yum install -y w
 	openssl-devel \
 	sqlite-devel \
 	zlib-devel 
+RUN yum clean all
 #Download rpm for JRE v1.8.0_91.
 # When downloading the JRE via the browser, Oracle now requires acceptance of terms. 
 # https://ivan-site.com/2012/05/download-oracle-java-jre-jdk-using-a-script found a way to do this with wget, which I use here as well.
