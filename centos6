@@ -37,3 +37,4 @@ RUN	wget https://bootstrap.pypa.io/get-pip.py && \
 	python get-pip.py && \
 	pip install numpy && \
 	pip install scipy
+RUN rm /srv/src/jre-8u91-linux-x64.rpm /srv/src/Python/Python-2.7.10.tgz
