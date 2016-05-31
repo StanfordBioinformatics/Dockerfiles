@@ -1,5 +1,5 @@
 FROM centos:centos6
-#comes with python/2.7.5
+#comes with python/2.7.5, but I'll install 2.7.10 and make that the default.
 MAINTAINER Nathaniel Watson <nathankw@stanford.edu>
 #RUN yum update -y && yum install -y wget git gcc unzip gcc-c++ zlib-devel openssl-devel sqlite-devel bzip2-devel ncurses-devel lapack-dev blas-dev
 RUN mkdir /srv/src /srv/software
