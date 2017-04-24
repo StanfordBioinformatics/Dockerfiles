@@ -20,7 +20,8 @@ RUN mkdir /srv/software/FASTQC && \
 	chmod a+x fastqc
 ENV PATH=/srv/software/FASTQC/FastQC:${PATH}
 
-RUN mkdir /Trimmed
+WORKDIR /home
+#the default workdir is /
 
 #CMD ["--help"]
 #ENTRYPOINT ["trim_galore"]
