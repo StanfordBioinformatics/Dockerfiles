@@ -26,8 +26,6 @@ RUN yum update -y && yum groupinstall -y 'Development Tools' && yum install -y w
 	zlib-devel 
 #'yum clean all' so this error doesn't pop up when trying to install Java: Rpmdb checksum is invalid: dCDPT(pkg checksums)
 RUN yum clean all
-#INSTALL CPANM for Perl
-RUN curl -L https://cpanmin.us | perl - --sudo App::cpanminus
 #INSTALL JRE v1.8.0_91.
 # Download rpm for JRE v1.8.0_91.
 # When downloading the JRE via the browser, Oracle now requires acceptance of terms. 
