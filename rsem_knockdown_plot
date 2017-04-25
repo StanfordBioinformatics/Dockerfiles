@@ -9,5 +9,6 @@ WORKDIR /home
 #CMD ["--help"]
 LABEL version="1.0" description="Compares the RSEM expression values (TPM) from a gene or isoform in two files (control and treatment), and extracts the TPM value from into a text file that can be used as input for creating a plot."
 
+#show help information by default
 CMD ["-h"]
 ENTRYPOINT ["cmp_two_rsem_results_files.py"]
