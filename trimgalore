@@ -1,5 +1,6 @@
 FROM nathankw/centos6
-MAINTAINER Nathaniel Watson <nathankw@stanford.edu>
+LABEL maintainer "Nathaniel Watson nathankw@stanford.edu"
+#Folders /srv/src and /srv/software were created in the base image.
 RUN pip install cutadapt
 #INSTALL Trim Galore v0.4.1.
 RUN mkdir -p /srv/software/TrimGalore && \
