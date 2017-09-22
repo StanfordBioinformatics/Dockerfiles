@@ -17,3 +17,6 @@ RUN yum update -y && yum groupinstall -y 'Development Tools' && yum install -y w
   openssl-devel \
   sqlite-devel \
   zlib-devel
+
+#Make area for installing other tools that don't link into system folders, i.e. FASTQC.
+RUN mkdir /srv/src /srv/software
