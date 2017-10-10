@@ -1,6 +1,6 @@
 # dockerfiles
 
-###Defunct Notice
+### Defunct Notice
 This repos is no longer active. Most of the Dockerfiles have been migrated to a GitHub organization specifically created to hold individual Dockerfile repos (see https://github.com/StanfordDockerfiles). Having multiple Dockerfiles in a single repo doens't work nicely with automated build systems, such as in Docker Hub or Quay.io, as an update to one Dockerfile triggers image-building in all other linked repositories. 
 
 
